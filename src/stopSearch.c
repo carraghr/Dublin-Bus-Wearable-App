@@ -140,6 +140,8 @@ static void _entry_enter_click(void *data, Evas_Object *obj, void *event_info){
 	/* get it! */
 	res = curl_easy_perform(curl_handle);
 
+	Evas_Object* popup = elm_popup_add(layout);
+
 	/* check for errors */
 	if(res != CURLE_OK) {
 		evas_object_hide(popup);
@@ -215,7 +217,7 @@ static void _entry_enter_click(void *data, Evas_Object *obj, void *event_info){
 				}
 			}
 				
-			popup = elm_popup_add(layout);
+			
 			elm_object_style_set(popup, "circle");
 			evas_object_size_hint_weight_set(popup, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 			eext_object_event_callback_add(popup, EEXT_CALLBACK_BACK, _popup_hide_cb, NULL);
